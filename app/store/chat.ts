@@ -364,6 +364,7 @@ export const useChatStore = createPersistStore(
         api.llm.chat({
           messages: sendMessages,
           config: { ...modelConfig, stream: true },
+          whitelist: false,
           onUpdate(message) {
             botMessage.streaming = true;
             if (message) {
@@ -568,6 +569,7 @@ export const useChatStore = createPersistStore(
               model: getSummarizeModel(session.mask.modelConfig.model),
               stream: false,
             },
+            whitelist: false,
             onFinish(message) {
               get().updateCurrentSession(
                 (session) =>
@@ -622,6 +624,7 @@ export const useChatStore = createPersistStore(
                 date: "",
               }),
             ),
+            whitelist: false,
             config: {
               ...modelcfg,
               stream: true,
@@ -669,7 +672,7 @@ export const useChatStore = createPersistStore(
   {
     name: StoreKey.Chat,
     version: 3.1,
-    migrate(persistedState, version) {
+    migrate(persistedState: any, version: any) {
       const state = persistedState as any;
       const newState = JSON.parse(
         JSON.stringify(state),

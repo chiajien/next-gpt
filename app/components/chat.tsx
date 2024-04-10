@@ -97,6 +97,7 @@ import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
 import { useAllModels } from "../utils/hooks";
 import { MultimodalContent } from "../client/api";
+import Image from "next/image";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -122,7 +123,7 @@ export function SessionConfigModel(props: { onClose: () => void }) {
             onClick={async () => {
               if (await showConfirm(Locale.Memory.ResetConfirm)) {
                 chatStore.updateCurrentSession(
-                  (session) => (session.memoryPrompt = ""),
+                  (session: any) => (session.memoryPrompt = ""),
                 );
               }
             }}
@@ -146,7 +147,9 @@ export function SessionConfigModel(props: { onClose: () => void }) {
           updateMask={(updater) => {
             const mask = { ...session.mask };
             updater(mask);
-            chatStore.updateCurrentSession((session) => (session.mask = mask));
+            chatStore.updateCurrentSession(
+              (session: any) => (session.mask = mask),
+            );
           }}
           shouldSyncFromGlobal
           extraListItems={
@@ -324,7 +327,7 @@ function ClearContextDivider() {
       className={styles["clear-context"]}
       onClick={() =>
         chatStore.updateCurrentSession(
-          (session) => (session.clearContextIndex = undefined),
+          (session: any) => (session.clearContextIndex = undefined),
         )
       }
     >
@@ -438,7 +441,7 @@ export function ChatActions(props: {
     const themeIndex = themes.indexOf(theme);
     const nextIndex = (themeIndex + 1) % themes.length;
     const nextTheme = themes[nextIndex];
-    config.update((config) => (config.theme = nextTheme));
+    config.update((config: any) => (config.theme = nextTheme));
   }
 
   // stop all responses
@@ -469,7 +472,7 @@ export function ChatActions(props: {
     if (isUnavaliableModel && models.length > 0) {
       const nextModel = models[0].name as ModelType;
       chatStore.updateCurrentSession(
-        (session) => (session.mask.modelConfig.model = nextModel),
+        (session: any) => (session.mask.modelConfig.model = nextModel),
       );
       showToast(nextModel);
     }
@@ -709,7 +712,8 @@ function _Chat() {
       trailing: true,
     },
   );
-
+  const [showImageBox, setShowImageBox] = useState(false);
+  const [imageBoxData, setImageBoxData] = useState({ src: "", alt: "" });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(measure, [userInput]);
 
@@ -1102,11 +1106,13 @@ function _Chat() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   const handlePaste = useCallback(
     async (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
       const currentModel = chatStore.currentSession().mask.modelConfig.model;
-      if(!isVisionModel(currentModel)){return;}
+      if (!isVisionModel(currentModel)) {
+        return;
+      }
       const items = (event.clipboardData || window.clipboardData).items;
       for (const item of items) {
         if (item.kind === "file" && item.type.startsWith("image/")) {
@@ -1187,6 +1193,12 @@ function _Chat() {
       images.splice(3, imagesLength - 3);
     }
     setAttachImages(images);
+  }
+
+  function openImageBox(src: string, alt?: string) {
+    alt = alt ?? "";
+    setImageBoxData({ src, alt });
+    setShowImageBox(true);
   }
 
   return (
@@ -1405,12 +1417,16 @@ function _Chat() {
                       fontSize={fontSize}
                       parentRef={scrollRef}
                       defaultShow={i >= messages.length - 6}
+                      openImageBox={openImageBox}
                     />
                     {getMessageImages(message).length == 1 && (
                       <img
                         className={styles["chat-message-item-image"]}
                         src={getMessageImages(message)[0]}
                         alt=""
+                        onClick={() =>
+                          openImageBox(getMessageImages(message)[0])
+                        }
                       />
                     )}
                     {getMessageImages(message).length > 1 && (
@@ -1424,13 +1440,15 @@ function _Chat() {
                       >
                         {getMessageImages(message).map((image, index) => {
                           return (
-                            <img
+                            <Image
                               className={
                                 styles["chat-message-item-image-multi"]
                               }
                               key={index}
                               src={image}
                               alt=""
+                              layout="responsive"
+                              onClick={() => openImageBox(image)}
                             />
                           );
                         })}
@@ -1507,6 +1525,7 @@ function _Chat() {
                     key={index}
                     className={styles["attach-image"]}
                     style={{ backgroundImage: `url("${image}")` }}
+                    onClick={() => openImageBox(image)}
                   >
                     <div className={styles["attach-image-mask"]}>
                       <DeleteImageButton
