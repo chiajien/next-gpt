@@ -115,7 +115,7 @@ export const useAccessStore = createPersistStore(
   {
     name: StoreKey.Access,
     version: 2,
-    migrate(persistedState, version) {
+    migrate(persistedState: any, version: any) {
       if (version < 2) {
         const state = persistedState as {
           token: string;

@@ -9,8 +9,28 @@ const en: LocaleType = {
   WIP: "Coming Soon...",
   Error: {
     Unauthorized: isApp
-      ? "Invalid API Key, please check it in [Settings](/#/settings) page."
+      ? "Unauthorized access, please enter your OpenAI API Key in [auth](/#/auth) page."
       : "Unauthorized access, please enter access code in [auth](/#/auth) page, or enter your OpenAI API Key.",
+    Content_Policy: {
+      Title: "Your request got flagged because of a Content Policy Violation.",
+      SubTitle:
+        "Read Here: https://platform.openai.com/docs/guides/moderation/overview",
+      Reason: {
+        Title: "Reason",
+        sexual: "Sexual",
+        hate: "Hate",
+        harassment: "Harassment",
+        "self-harm": "Self-harm",
+        "sexual/minors": "Sexual/minors",
+        "hate/threatening": "Hate/threatening",
+        "violence/graphic": "Violence/graphic",
+        "self-harm/intent": "Self-harm/intent",
+        "self-harm/instructions": "Self-harm/instructions",
+        "harassment/threatening": "Harassment/threatening",
+        violence: "Violence",
+      },
+    },
+    TextModerationErr: "We encountered an issue while reviewing your message:",
   },
   Auth: {
     Title: "Need Access Code",

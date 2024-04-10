@@ -4,13 +4,32 @@ import { SubmitKey } from "../store/config";
 const isApp = !!getClientConfig()?.isApp;
 
 const tw = {
-  WIP: "該功能仍在開發中……",
+  WIP: "此功能仍在開發中…",
   Error: {
     Unauthorized: isApp
-      ? "檢測到無效 API Key，請前往[設定](/#/settings)頁檢查 API Key 是否設定正確。"
-      : "訪問密碼不正確或為空，請前往[登入](/#/auth)頁輸入正確的訪問密碼，或者在[設定](/#/settings)頁填入你自己的 OpenAI API Key。",
+      ? "未經授權的訪問，請在 [auth](/#/auth) 頁面輸入您的 OpenAI API Key。"
+      : "存取密碼不正確或為空，請前往[登入](/#/auth)頁輸入正確的存取密碼，或在[設定](/#/settings)頁填入你自己的OpenAI API Key。",
+    Content_Policy: {
+      Title: "您的請求因違反內容政策而被標記。",
+      SubTitle:
+        "閱讀詳情：https://platform.openai.com/docs/guides/moderation/overview",
+      Reason: {
+        Title: "理由",
+        sexual: "性別",
+        hate: "仇恨",
+        harassment: "騷擾",
+        "self-harm": "自殘",
+        "sexual/minors": "性別/未成年",
+        "hate/threatening": "仇恨/威脅",
+        "violence/graphic": "暴力/圖形",
+        "self-harm/intent": "自殘/意圖",
+        "self-harm/instructions": "自殘/指導",
+        "harassment/threatening": "騷擾/威脅",
+        violence: "暴力",
+      },
+    },
+    TextModerationErr: "審核您的訊息時遇到問題：",
   },
-
   Auth: {
     Title: "需要密碼",
     Tips: "管理員開啟了密碼驗證，請在下方填入訪問碼",

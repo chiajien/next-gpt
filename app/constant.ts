@@ -87,6 +87,17 @@ export const Anthropic = {
 
 export const OpenaiPath = {
   ChatPath: "v1/chat/completions",
+  // text moderation
+  ModerationPath: "v1/moderations",
+  TextModerationModels: {
+    latest: "text-moderation-latest",
+    stable: "text-moderation-stable",
+  },
+  // image creation (dalle models)
+  ImageCreationPath: "v1/images/generations",
+  // todo
+  ImageEditPath: "v1/images/edits",
+  ImageVariationPath: "v1/images/variations",
   UsagePath: "dashboard/billing/usage",
   SubsPath: "dashboard/billing/subscription",
   ListModelPath: "v1/models",
@@ -316,6 +327,15 @@ export const DEFAULT_MODELS = [
       id: "google",
       providerName: "Google",
       providerType: "google",
+    },
+  },
+  {
+    name: "dall-e-3",
+    available: true,
+    provider: {
+      id: "openai",
+      providerName: "OpenAI",
+      providerType: "openai",
     },
   },
   // {

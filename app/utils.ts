@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { showToast } from "./components/ui-lib";
 import Locale from "./locales";
 import { RequestMessage } from "./client/api";
+import { useAccessStore } from "./store";
 
 export function trimTopic(topic: string) {
   // Fix an issue where double quotes still show in the Indonesian language
@@ -294,4 +295,9 @@ export function isVisionModel(model: string) {
   const visionKeywords = ["vision", "claude-3", "gpt-4"];
 
   return visionKeywords.some((keyword) => model.includes(keyword));
+}
+
+export function getProviderFromState(): string {
+  const accessStore = useAccessStore.getState();
+  return accessStore.provider;
 }
