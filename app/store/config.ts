@@ -133,7 +133,7 @@ export const useAppConfig = createPersistStore(
   {
     name: StoreKey.Config,
     version: 3.8,
-    migrate(persistedState, version) {
+    migrate(persistedState: any, version: any) {
       const state = persistedState as ChatConfig;
 
       if (version < 3.4) {

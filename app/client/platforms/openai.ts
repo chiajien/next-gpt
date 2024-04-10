@@ -104,7 +104,7 @@ export class ChatGPTApi implements LLMApi {
      * This variable stores the text moderation settings obtained from the app configuration.
      * @author H0llyW00dzZ
      */
-    const textmoderation = useAppConfig.getState().textmoderation;
+    const textmoderation = useAppConfig.getState().textmoderation as any;
     const checkprovider = getProviderFromState();
     const userMessageS = options.messages.filter((msg) => msg.role === "user");
     const lastUserMessageContent =
