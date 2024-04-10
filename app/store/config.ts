@@ -63,6 +63,8 @@ export const DEFAULT_CONFIG = {
     style: "vivid",
   },
   textmoderation: true,
+  desktopShortcut: "",
+  speed_animation: 60,
 };
 
 export type ChatConfig = typeof DEFAULT_CONFIG;
