@@ -57,7 +57,12 @@ export const DEFAULT_CONFIG = {
     compressMessageLengthThreshold: 1000,
     enableInjectSystemPrompts: true,
     template: DEFAULT_INPUT_TEMPLATE,
+    quality: "hd",
+    n: 1,
+    size: "1024x1024",
+    style: "vivid",
   },
+  textmoderation: true,
 };
 
 export type ChatConfig = typeof DEFAULT_CONFIG;

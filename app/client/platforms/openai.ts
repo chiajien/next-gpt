@@ -104,7 +104,7 @@ export class ChatGPTApi implements LLMApi {
      * This variable stores the text moderation settings obtained from the app configuration.
      * @author H0llyW00dzZ
      */
-    const textmoderation = useAppConfig.getState().textmoderation as any;
+    const textmoderation = useAppConfig.getState().textmoderation;
     const checkprovider = getProviderFromState();
     const userMessageS = options.messages.filter((msg) => msg.role === "user");
     const lastUserMessageContent =
@@ -302,8 +302,6 @@ export class ChatGPTApi implements LLMApi {
         requestPayload = requestPayloads.chat;
       }
 
-      console.log(requestPayload);
-
       const chatPayload = {
         method: "POST",
         body: JSON.stringify(requestPayload),
@@ -384,7 +382,9 @@ export class ChatGPTApi implements LLMApi {
                     index + 1
                   })\n\n\n | ![${imageUrl}](${imageUrl}) |\n|---|\n| Size: ${size} |\n| [Download Here](${imageUrl}) |\n| 🤖 AI Models: ${defaultModel} |`;
                   if (defaultModel.includes("dall-e-3")) {
-                    imageDescription = `| ![${revised_prompt}](${imageUrl}) |\n|---|\n| [Download Here](${imageUrl}) |\n| 🎩 🪄 Revised Prompt : ${revised_prompt} |\n| 🤖 AI Models: ${defaultModel} |`;
+                    imageDescription = `| ![${revised_prompt}](${imageUrl}) |\n|---|\n| Size: ${size} |\n| [Download Here](${imageUrl}) |\n| 🎩 🪄 Revised Prompt (${
+                      index + 1
+                    }): ${revised_prompt} |\n| 🤖 AI Models: ${defaultModel} |`;
                   }
                   responseText = `${imageDescription}`;
                 }
