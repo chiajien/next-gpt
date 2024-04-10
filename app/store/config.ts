@@ -61,6 +61,7 @@ export const DEFAULT_CONFIG = {
     n: 1,
     size: "1024x1024",
     style: "vivid",
+    useMaxTokens: false,
   },
   textmoderation: true,
   desktopShortcut: "",
