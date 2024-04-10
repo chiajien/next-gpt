@@ -291,7 +291,7 @@ export function getMessageImages(message: RequestMessage): string[] {
 
 export function isVisionModel(model: string) {
   // Note: This is a better way using the TypeScript feature instead of `&&` or `||` (ts v5.5.0-dev.20240314 I've been using)
-  const visionKeywords = ["vision", "claude-3"];
+  const visionKeywords = ["vision", "claude-3", "gpt-4"];
 
   return visionKeywords.some((keyword) => model.includes(keyword));
 }
