@@ -37,6 +37,7 @@ import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
 import RobotIcon from "../icons/robot.svg";
+import CloseIcon from "../icons/close.svg";
 
 import {
   ChatMessage,
@@ -648,6 +649,25 @@ export function DeleteImageButton(props: { deleteImage: () => void }) {
   return (
     <div className={styles["delete-image"]} onClick={props.deleteImage}>
       <DeleteIcon />
+    </div>
+  );
+}
+
+export function ImageBox(props: {
+  showImageBox: boolean;
+  data: { src: string; alt: string };
+  closeImageBox: () => void;
+}) {
+  return (
+    <div
+      className={styles["image-box"]}
+      style={{ display: props.showImageBox ? "block" : "none" }}
+      onClick={props.closeImageBox}
+    >
+      <img src={props.data.src} alt={props.data.alt} />
+      <div className={styles["image-box-close-button"]}>
+        <CloseIcon />
+      </div>
     </div>
   );
 }
@@ -1269,7 +1289,11 @@ function _Chat() {
           setShowModal={setShowPromptModal}
         />
       </div>
-
+      <ImageBox
+        showImageBox={showImageBox}
+        data={imageBoxData}
+        closeImageBox={() => setShowImageBox(false)}
+      ></ImageBox>
       <div
         className={styles["chat-body"]}
         ref={scrollRef}
