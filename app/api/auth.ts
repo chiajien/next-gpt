@@ -74,6 +74,9 @@ export function auth(req: NextRequest, modelProvider: ModelProvider) {
         systemApiKey = serverConfig.anthropicApiKey;
         break;
       case ModelProvider.GPT:
+      case ModelProvider.StableDiffusion:
+        systemApiKey = serverConfig.huggingFaceApiKey;
+        break;
       default:
         if (serverConfig.isAzure) {
           systemApiKey = serverConfig.azureApiKey;

@@ -13,6 +13,7 @@ export const OPENAI_BASE_URL = "https://api.openai.com";
 export const ANTHROPIC_BASE_URL = "https://api.anthropic.com";
 
 export const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/";
+export const HUGGING_FACE_BASE_URL = "https://api-inference.huggingface.co";
 
 export enum Path {
   Home = "/",
@@ -27,6 +28,7 @@ export enum ApiPath {
   Cors = "",
   OpenAI = "/api/openai",
   Anthropic = "/api/anthropic",
+  HuggingFace = "/models",
 }
 
 export enum SlotID {
@@ -70,12 +72,14 @@ export enum ServiceProvider {
   Azure = "Azure",
   Google = "Google",
   Anthropic = "Anthropic",
+  HuggingFace = "HuggingFace",
 }
 
 export enum ModelProvider {
   GPT = "GPT",
   GeminiPro = "GeminiPro",
   Claude = "Claude",
+  StableDiffusion = "StableDifusion",
 }
 
 export const Anthropic = {
@@ -83,6 +87,10 @@ export const Anthropic = {
   ChatPath1: "v1/complete",
   ExampleEndpoint: "https://api.anthropic.com",
   Vision: "2023-06-01",
+};
+
+export const HuggingFace = {
+  StableDifusionPath: "/stabilityai/stable-diffusion-xl-base-1.0",
 };
 
 export const OpenaiPath = {
@@ -336,6 +344,15 @@ export const DEFAULT_MODELS = [
       id: "openai",
       providerName: "OpenAI",
       providerType: "openai",
+    },
+  },
+  {
+    name: "stable-difussion",
+    available: true,
+    provider: {
+      id: "huggingface",
+      providerName: "HuggingFace",
+      providerType: "huggingface",
     },
   },
   // {

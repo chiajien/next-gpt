@@ -350,12 +350,15 @@ export const useChatStore = createPersistStore(
             botMessage,
           ]);
         });
+        console.log(modelConfig.model);
 
         var api: ClientApi;
         if (modelConfig.model.startsWith("gemini")) {
           api = new ClientApi(ModelProvider.GeminiPro);
         } else if (identifyDefaultClaudeModel(modelConfig.model)) {
           api = new ClientApi(ModelProvider.Claude);
+        } else if (modelConfig.model.startsWith("stable-difussion")) {
+          api = new ClientApi(ModelProvider.StableDiffusion);
         } else {
           api = new ClientApi(ModelProvider.GPT);
         }
@@ -366,6 +369,7 @@ export const useChatStore = createPersistStore(
           config: { ...modelConfig, stream: true },
           whitelist: false,
           onUpdate(message) {
+            console.log("onUpdate");
             botMessage.streaming = true;
             if (message) {
               botMessage.content = message;
@@ -375,7 +379,9 @@ export const useChatStore = createPersistStore(
             });
           },
           onFinish(message) {
+            console.log("onFinish");
             botMessage.streaming = false;
+            console.log(message);
             if (message) {
               botMessage.content = message;
               get().onNewMessage(botMessage);
@@ -383,6 +389,7 @@ export const useChatStore = createPersistStore(
             ChatControllerPool.remove(session.id, botMessage.id);
           },
           onError(error) {
+            console.log("error");
             const isAborted = error.message.includes("aborted");
             botMessage.content +=
               "\n\n" +
@@ -404,6 +411,7 @@ export const useChatStore = createPersistStore(
             console.error("[Chat] failed ", error);
           },
           onController(controller) {
+            console.log("controller");
             // collect controller for stop/retry
             ChatControllerPool.addController(
               session.id,
@@ -543,6 +551,8 @@ export const useChatStore = createPersistStore(
           api = new ClientApi(ModelProvider.GeminiPro);
         } else if (identifyDefaultClaudeModel(modelConfig.model)) {
           api = new ClientApi(ModelProvider.Claude);
+        } else if (modelConfig.model.startsWith("stable-difussion")) {
+          api = new ClientApi(ModelProvider.StableDiffusion);
         } else {
           api = new ClientApi(ModelProvider.GPT);
         }
