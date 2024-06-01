@@ -44,7 +44,12 @@ export default async function App() {
             }}
           >
             <h1
-              style={{ fontSize: "80px", marginBottom: "50px", color: "#333" }}
+              style={{
+                fontSize: "70px",
+                marginBottom: "50px",
+                paddingLeft: "30px",
+                paddingRight: "10px",
+              }}
             >
               Welcome to Techy GPT
             </h1>
