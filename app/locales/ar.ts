@@ -97,6 +97,7 @@ const ar: PartialLocaleType = {
     DeleteChat: "هل تريد تأكيد حذف المحادثة المحددة؟",
     DeleteToast: "تم حذف الدردشة",
     Revert: "التراجع",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "الإعدادات",

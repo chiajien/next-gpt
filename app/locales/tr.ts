@@ -57,6 +57,7 @@ const tr: PartialLocaleType = {
     DeleteChat: "Seçili sohbeti silmeyi onaylıyor musunuz?",
     DeleteToast: "Sohbet Silindi",
     Revert: "Geri Al",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Ayarlar",

@@ -57,6 +57,7 @@ const vi: PartialLocaleType = {
     DeleteChat: "Xác nhận xóa các cuộc trò chuyện đã chọn?",
     DeleteToast: "Đã xóa cuộc trò chuyện",
     Revert: "Khôi phục",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Cài đặt",

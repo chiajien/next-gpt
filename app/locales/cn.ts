@@ -144,6 +144,7 @@ const cn = {
     DeleteChat: "确认删除选中的对话？",
     DeleteToast: "已删除会话",
     Revert: "撤销",
+    SignOut: "登出",
   },
   Settings: {
     Title: "设置",

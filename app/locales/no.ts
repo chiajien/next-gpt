@@ -53,6 +53,7 @@ const no: PartialLocaleType = {
     DeleteChat: "Bekreft for å slette det valgte dialogen",
     DeleteToast: "Samtale slettet",
     Revert: "Tilbakestill",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Innstillinger",

@@ -91,6 +91,7 @@ const jp: PartialLocaleType = {
     DeleteChat: "選択したチャットを削除してもよろしいですか？",
     DeleteToast: "チャットが削除されました",
     Revert: "元に戻す",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "設定",

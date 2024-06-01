@@ -58,6 +58,7 @@ const ko: PartialLocaleType = {
     DeleteChat: "선택한 대화를 삭제하시겠습니까?",
     DeleteToast: "채팅이 삭제되었습니다.",
     Revert: "되돌리기",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "설정",

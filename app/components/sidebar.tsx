@@ -16,7 +16,7 @@ import DragIcon from "../icons/drag.svg";
 import Locale from "../locales";
 
 import { useAppConfig, useChatStore } from "../store";
-
+import { useClerk } from "@clerk/nextjs";
 import {
   DEFAULT_SIDEBAR_WIDTH,
   MAX_SIDEBAR_WIDTH,
@@ -130,7 +130,7 @@ function useDragSideBar() {
 
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
-
+  const { signOut } = useClerk();
   // drag side bar
   const { onDragStart, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
@@ -159,6 +159,16 @@ export function SideBar(props: { className?: string }) {
         </div>
         <br />
         <div className={styles["sidebar-sub-title"]}>| H.E.R.A |</div>
+
+        <div style={{ paddingTop: "20px" }}>
+          <IconButton
+            icon={<AddIcon />}
+            text={shouldNarrow ? undefined : Locale.Home.SignOut}
+            onClick={() => signOut({ redirectUrl: "/" })}
+            shadow
+          />
+        </div>
+
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
         </div>

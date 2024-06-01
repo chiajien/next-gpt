@@ -109,6 +109,7 @@ const bn: PartialLocaleType = {
     DeleteChat: "নির্বাচিত সংলাপটি মুছতে নিশ্চিত করুন?",
     DeleteToast: "চ্যাটটি মুছেছেন",
     Revert: "পুনরায়",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "সেটিংস",

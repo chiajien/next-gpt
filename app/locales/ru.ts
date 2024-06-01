@@ -57,6 +57,7 @@ const ru: PartialLocaleType = {
     DeleteChat: "Вы действительно хотите удалить выбранный разговор?",
     DeleteToast: "Чат удален",
     Revert: "Отмена",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Настройки",

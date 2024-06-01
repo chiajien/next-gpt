@@ -57,6 +57,7 @@ const de: PartialLocaleType = {
     DeleteChat: "Bestätigen Sie, um das ausgewählte Gespräch zu löschen?",
     DeleteToast: "Chat gelöscht",
     Revert: "Zurücksetzen",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Einstellungen",

@@ -57,6 +57,7 @@ const cs: PartialLocaleType = {
     DeleteChat: "Potvrzujete smazání vybrané konverzace?",
     DeleteToast: "Chat smazán",
     Revert: "Zvrátit",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Nastavení",

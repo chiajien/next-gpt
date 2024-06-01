@@ -147,6 +147,7 @@ const en: LocaleType = {
     DeleteChat: "Confirm to delete the selected conversation?",
     DeleteToast: "Chat Deleted",
     Revert: "Revert",
+    SignOut: "Sign Out",
   },
   Settings: {
     Title: "Settings",
