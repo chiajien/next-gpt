@@ -8,6 +8,7 @@ import GithubIcon from "../icons/github.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
+import DownIcon from "../icons/logout.svg";
 import DeleteIcon from "../icons/delete.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
@@ -162,7 +163,7 @@ export function SideBar(props: { className?: string }) {
 
         <div style={{ paddingTop: "20px" }}>
           <IconButton
-            icon={<AddIcon />}
+            icon={<DownIcon />}
             text={shouldNarrow ? undefined : Locale.Home.SignOut}
             onClick={() => signOut({ redirectUrl: "/" })}
             shadow
