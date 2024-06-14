@@ -49,7 +49,7 @@ export const DEFAULT_CONFIG = {
     model: "gpt-4o" as ModelType,
     temperature: 0.5,
     top_p: 1,
-    max_tokens: 4000,
+    max_tokens: 99999,
     presence_penalty: 0,
     frequency_penalty: 0,
     sendMemory: true,
