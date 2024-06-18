@@ -45,8 +45,8 @@ export function getNewStuff(
   if (isNewModel || isDalle) {
     payloadType = isDalle ? "image" : "chat";
     return {
-      max_tokens: 4096,
-      maxOutputTokens: 4096, // Assign the same value to maxOutputTokens
+      max_tokens: tokens,
+      maxOutputTokens: tokens, // Assign the same value to maxOutputTokens
       isNewModel: true,
       payloadType,
       isDalle,
