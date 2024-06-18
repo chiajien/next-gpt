@@ -221,7 +221,7 @@ export class ChatGPTApi implements LLMApi {
         presence_penalty: modelConfig.presence_penalty,
         frequency_penalty: modelConfig.frequency_penalty,
         top_p: modelConfig.top_p,
-        max_tokens: 120000,
+        max_tokens: 4096,
         // beta test for new model's since it consumed much tokens
         // max is 4096
         // ...(max_tokens !== undefined ? { max_tokens } : {}), // Spread the max_tokens value if defined
