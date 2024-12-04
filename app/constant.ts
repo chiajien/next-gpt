@@ -148,6 +148,7 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   default: "2021-09",
   "gpt-4-turbo": "2023-12",
   "gpt-4o": "2023-10",
+  "gpt-4o-mini": "2023-10",
   // "gpt-4-turbo-preview": "2023-12",
   // "gpt-4-1106-preview": "2023-04",
   // "gpt-4-0125-preview": "2023-12",
@@ -155,6 +156,7 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   // After improvements,
   // it's now easier to add "KnowledgeCutOffDate" instead of stupid hardcoding it, as was done previously.
   "gemini-pro": "2023-12",
+  "gemini-1.5-flash": "2024-07",
 };
 
 export const DEFAULT_MODELS = [
@@ -258,6 +260,15 @@ export const DEFAULT_MODELS = [
     },
   },
   {
+    name: "gpt-4o-mini",
+    available: true,
+    provider: {
+      id: "openai",
+      providerName: "OpenAI",
+      providerType: "openai",
+    },
+  },
+  {
     name: "gpt-4-turbo",
     available: true,
     provider: {
@@ -329,6 +340,15 @@ export const DEFAULT_MODELS = [
   //     providerType: "openai",
   //   },
   // },
+  {
+    name: "gemini-1.5-flash",
+    available: true,
+    provider: {
+      id: "google",
+      providerName: "Google",
+      providerType: "google",
+    },
+  },
   {
     name: "gemini-pro",
     available: true,
